@@ -1,0 +1,26 @@
+{
+  "name": "airbaltic",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "start": "nuxt start"
+  },
+  "dependencies": {
+    "@headlessui/vue": "^1.4.0",
+    "@heroicons/vue": "^2.0.13",
+    "autoprefixer": "^10.4.21",
+    "bootstrap": "^5.3.0",
+    "nuxt": "^3.16.0",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17"
+  },
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "^6.13.1",
+    "sass": "^1.85.1",
+    "sass-loader": "^16.0.5",
+    "vite-tsconfig-paths": "^5.1.4"
+  }
+}
