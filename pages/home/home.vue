@@ -2,10 +2,8 @@
   <div>
     <Menu />
     <NuxtPage />
-
     <div class="relative">
-      <h1>Welcome to My Nuxt.js App</h1>
-      <p>This is the home page.</p>
+      <Form />
     </div>
     <Footer />
   </div>
@@ -14,11 +12,13 @@
 <script>
 import Menu from "@/components/menu.vue";
 import Footer from "@/components/footer.vue";
+import Form from "@/components/form.vue";
 
 export default {
   components: {
     Menu,
     Footer,
+    Form,
   },
   name: "HomePage",
 };

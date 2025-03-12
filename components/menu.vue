@@ -4,11 +4,11 @@
       <div class="bg-white">
         <header class="inset-x-0 top-0 z-50">
           <nav
-            class="menu-container-inner flex items-center justify-between p-6"
+            class="menu-container-inner flex items-center justify-between"
             aria-label="Global"
           >
             <div class="flex lg:flex-1 logo-container">
-              <a href="#" class="-m-1.5 p-1.5 logo-container-a">
+              <a href="#" class="p-1.5 logo-container-a">
                 <svg
                   viewBox="0 0 122 31"
                   fill="none"
@@ -122,30 +122,18 @@
                 </a>
               </div>
               <div class="manu-txt-lg-container hidden lg:flex">
-                <NuxtLink
-                  class="manu-txt-lg text-sm/6 font-semibold text-gray-900"
-                  to="/main/plan"
+                <NuxtLink class="manu-txt-lg" to="/main/plan"
                   >Plan and book</NuxtLink
                 >
-                <NuxtLink
-                  to="/main/prepare"
-                  class="manu-txt-lg text-sm/6 font-semibold text-gray-900"
+                <NuxtLink to="/main/prepare" class="manu-txt-lg"
                   >Prepare for your trip</NuxtLink
                 >
-                <NuxtLink
-                  to="/main/information"
-                  class="manu-txt-lg text-sm/6 font-semibold text-gray-900"
+                <NuxtLink to="/main/information" class="manu-txt-lg"
                   >Information</NuxtLink
                 >
-                <NuxtLink
-                  to="/main/pins"
-                  class="manu-txt-lg text-sm/6 font-semibold text-gray-900"
-                  >PINS</NuxtLink
-                >
+                <NuxtLink to="/main/pins" class="manu-txt-lg">PINS</NuxtLink>
 
-                <NuxtLink
-                  to="/main/offers"
-                  class="manu-txt-lg text-sm/6 font-semibold text-gray-900"
+                <NuxtLink to="/main/offers" class="manu-txt-lg"
                   >Special offers</NuxtLink
                 >
               </div>
@@ -164,7 +152,7 @@
               class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
             >
               <div class="flex items-center justify-between">
-                <a href="#" class="-m-1.5 p-1.5">
+                <a href="#" class="p-1.5">
                   <span class="sr-only">Your Company</span>
                   <svg
                     width="92"
@@ -209,36 +197,36 @@
                 <div class="-my-6 divide-y divide-gray-500/10">
                   <div class="space-y-2 py-6">
                     <NuxtLink
-                      class="manu-txt-lg -mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                      class="manu-txt-lg -mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:bg-gray-50"
                       to="/main/plan"
                       >Plan and book</NuxtLink
                     >
                     <NuxtLink
                       to="/main/prepare"
-                      class="manu-txt-lg -mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                      class="manu-txt-lg -mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:bg-gray-50"
                       >Prepare for your trip</NuxtLink
                     >
                     <NuxtLink
                       to="/main/information"
-                      class="manu-txt-lg -mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                      class="manu-txt-lg -mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:bg-gray-50"
                       >Information</NuxtLink
                     >
                     <NuxtLink
                       to="/main/pins"
-                      class="manu-txt-lg -mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                      class="manu-txt-lg -mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:bg-gray-50"
                       >PINS</NuxtLink
                     >
 
                     <NuxtLink
                       to="/main/offers"
-                      class="manu-txt-lg -mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                      class="manu-txt-lg -mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:bg-gray-50"
                       >Special offers</NuxtLink
                     >
                   </div>
                   <div class="py-6">
                     <a
                       href="#"
-                      class="menu-icon-mobile menu-icon menu-small-txt-h2 -mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                      class="menu-icon-mobile menu-icon menu-small-txt-h2 -mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold hover:bg-gray-50"
                     >
                       <svg
                         width="20"
@@ -256,7 +244,7 @@
                     >
                     <NuxtLink
                       to="/settings/login"
-                      class="menu-icon-mobile menu-icon menu-small-txt-h2 -mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                      class="menu-icon-mobile menu-icon menu-small-txt-h2 -mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold hover:bg-gray-50"
                     >
                       <svg
                         viewBox="0 0 20 20"
@@ -272,7 +260,7 @@
                     >
                     <a
                       href="#"
-                      class="menu-icon-mobile menu-icon menu-small-txt-h2 -mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                      class="menu-icon-mobile menu-icon menu-small-txt-h2 -mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold hover:bg-gray-50"
                     >
                       <svg
                         viewBox="0 0 20 20"
@@ -448,25 +436,18 @@ export default {
   height: 0.0625rem;
   background: #e2e4e9;
 }
+.icon-active {
+  transform: rotate(180deg);
+}
 .menu-icon-mobile {
   margin-left: 0;
-  display: flex;
+  display: flex !important;
   height: 2.25rem;
   gap: 0.5rem;
   padding: 0;
   align-items: center;
   justify-content: flex-start;
 }
-
-.icon-active {
-  transform: rotate(180deg);
-}
-
-/* @media (max-width: 1023px) {
-  .menu-desktop {
-    display: none;
-  }
-} */
 @media (max-width: 1222px) {
   .menu-container {
     padding: 0 1.6rem 0 0;

@@ -1,5 +1,6 @@
-// filepath: /Users/viktorijadeksne/Documents/Viktorija_2025/March/Nuxt_Test_V7/airbaltic/tailwind.config.js
-module.exports = {
+import type { Config } from "tailwindcss";
+
+const config: Config = {
   content: [
     "./components/**/*.{vue,js}",
     "./layouts/**/*.vue",
@@ -12,3 +13,5 @@ module.exports = {
   },
   plugins: [],
 };
+
+export default config;
