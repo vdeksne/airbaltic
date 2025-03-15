@@ -363,13 +363,13 @@ export default defineComponent({
     return {
       mobile: false,
       mobileNav: false,
-      windowWidth: window.innerWidth,
+      windowWidth: 0,
     };
   },
   setup() {
     const mobile = ref(false);
     const mobileNav = ref(false);
-    const windowWidth = ref(window.innerWidth);
+    const windowWidth = ref(0);
     const formStore = useFormStore();
     const { formData, updateFormData, resetForm } = formStore;
     const errors = ref<{ [key: string]: string }>({});
@@ -417,12 +417,17 @@ export default defineComponent({
     };
 
     onMounted(() => {
-      window.addEventListener("resize", checkScreen);
-      checkScreen();
+      if (typeof window !== "undefined") {
+        windowWidth.value = window.innerWidth;
+        window.addEventListener("resize", checkScreen);
+        checkScreen();
+      }
     });
 
     onUnmounted(() => {
-      window.removeEventListener("resize", checkScreen);
+      if (typeof window !== "undefined") {
+        window.removeEventListener("resize", checkScreen);
+      }
     });
 
     const checkScreen = () => {

@@ -1,22 +1,21 @@
 <template>
   <div>
-    <Menu />
-    <NuxtPage />
-    <div class="relative">
-      <Form />
-    </div>
-    <Footer />
+    <NuxtLayout>
+      <NuxtPage />
+      <div class="relative">
+        <Form />
+      </div>
+      <Footer />
+    </NuxtLayout>
   </div>
 </template>
 
 <script>
-import Menu from "@/components/menu.vue";
 import Footer from "@/components/footer.vue";
 import Form from "@/components/form.vue";
 
 export default {
   components: {
-    Menu,
     Footer,
     Form,
   },

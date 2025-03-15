@@ -310,12 +310,20 @@ export default {
     return {
       mobile: false,
       mobileNav: false,
-      windowWidth: window.innerWidth,
+      windowWidth: 0,
     };
   },
-  created() {
-    window.addEventListener("resize", this.checkScreen);
-    this.checkScreen();
+  mounted() {
+    if (typeof window !== "undefined") {
+      this.windowWidth = window.innerWidth;
+      window.addEventListener("resize", this.checkScreen);
+      this.checkScreen();
+    }
+  },
+  beforeDestroy() {
+    if (typeof window !== "undefined") {
+      window.removeEventListener("resize", this.checkScreen);
+    }
   },
   methods: {
     toggleMobileNav() {
@@ -323,13 +331,15 @@ export default {
     },
 
     checkScreen() {
-      this.windowWidth = window.innerWidth;
-      if (this.windowWidth <= 1399) {
-        this.mobile = true;
-        return;
+      if (typeof window !== "undefined") {
+        this.windowWidth = window.innerWidth;
+        if (this.windowWidth <= 1399) {
+          this.mobile = true;
+          return;
+        }
+        this.mobile = false;
+        this.mobileNav = false;
       }
-      this.mobile = false;
-      this.mobileNav = false;
     },
   },
 };

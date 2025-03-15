@@ -1,3 +1,11 @@
 <template>
-  <div>prepare</div>
+  <NuxtLayout name="custom">
+    <div>Prepare</div>
+  </NuxtLayout>
 </template>
+
+<script setup>
+import { ref } from "vue";
+
+const customLayout = ref("custom");
+</script>

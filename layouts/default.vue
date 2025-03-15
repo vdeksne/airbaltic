@@ -2,6 +2,9 @@
   <div>
     <Menu />
   </div>
+  <div>
+    <slot></slot>
+  </div>
 </template>
 
 <script>
@@ -11,7 +14,7 @@ export default {
   components: {
     Menu,
   },
-  name: "HomePage",
+  name: "DefaultLayout",
 };
 </script>
 

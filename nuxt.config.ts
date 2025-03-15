@@ -16,14 +16,6 @@ export default defineNuxtConfig({
   build: {
     transpile: ["@headlessui/vue", "@heroicons/vue"],
   },
-
-  vite: {
-    server: {
-      fs: {
-        allow: [".."], // Allow access to the parent directory
-      },
-    },
-  },
   postcss: {
     plugins: {
       tailwindcss: {},

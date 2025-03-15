@@ -1,31 +1,11 @@
 <template>
-  <div>
-    <Menu />
-    <NuxtPage />
-    <div class="relative">
-      <Form />
-    </div>
-    <Footer />
-  </div>
+  <NuxtLayout name="custom">
+    <div>Home</div>
+  </NuxtLayout>
 </template>
 
-<script>
-import Menu from "@/components/menu.vue";
-import Footer from "@/components/footer.vue";
-import Form from "@/components/form.vue";
+<script setup>
+import { ref } from "vue";
 
-export default {
-  components: {
-    Menu,
-    Footer,
-    Form,
-  },
-  name: "HomePage",
-};
+const customLayout = ref("custom");
 </script>
-
-<style scoped>
-.relative {
-  position: relative;
-}
-</style>

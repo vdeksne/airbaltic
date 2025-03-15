@@ -8,7 +8,7 @@
             aria-label="Global"
           >
             <div class="flex lg:flex-1 logo-container">
-              <a href="#" class="p-1.5 logo-container-a">
+              <NuxtLink to="/" class="p-1.5 logo-container-a">
                 <svg
                   viewBox="0 0 122 31"
                   fill="none"
@@ -19,7 +19,8 @@
                     fill="#152649"
                   />
                 </svg>
-              </a>
+              </NuxtLink>
+              <!-- nuxt page end -->
             </div>
             <div class="flex lg:hidden icon">
               <i
@@ -294,12 +295,20 @@ export default {
       scrollPosition: false,
       mobile: false,
       mobileNav: false,
-      windowWidth: window.innerWidth,
+      windowWidth: typeof window !== "undefined" ? window.innerWidth : 0,
     };
   },
-  created() {
-    window.addEventListener("resize", this.checkScreen);
-    this.checkScreen();
+  mounted() {
+    if (typeof window !== "undefined") {
+      this.windowWidth = window.innerWidth;
+      window.addEventListener("resize", this.checkScreen);
+      this.checkScreen();
+    }
+  },
+  beforeDestroy() {
+    if (typeof window !== "undefined") {
+      window.removeEventListener("resize", this.checkScreen);
+    }
   },
   methods: {
     toggleMobileNav() {
@@ -307,13 +316,15 @@ export default {
     },
 
     checkScreen() {
-      this.windowWidth = window.innerWidth;
-      if (this.windowWidth <= 1000) {
-        this.mobile = true;
-        return;
+      if (typeof window !== "undefined") {
+        this.windowWidth = window.innerWidth;
+        if (this.windowWidth <= 1000) {
+          this.mobile = true;
+          return;
+        }
+        this.mobile = false;
+        this.mobileNav = false;
       }
-      this.mobile = false;
-      this.mobileNav = false;
     },
   },
 };
