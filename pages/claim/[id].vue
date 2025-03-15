@@ -1,5 +1,5 @@
 <template>
-  <div>we are inside claim page</div>
+  <div>We are inside claim page</div>
 </template>
 
 <script setup>
