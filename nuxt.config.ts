@@ -1,14 +1,10 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 import { defineNuxtConfig } from "nuxt/config";
 
 export default defineNuxtConfig({
   compatibilityDate: "2025-03-10",
   devtools: { enabled: true },
-  modules: ["@nuxtjs/tailwindcss"],
-  css: [
-    "bootstrap/dist/css/bootstrap.min.css",
-    "@/assets/css/main.css", // Your custom CSS file
-  ],
+  modules: ["@nuxt/ui", "@nuxtjs/tailwindcss", "@nuxt/test-utils/module"],
+  css: ["@/assets/scss/main.scss"],
   plugins: [
     { src: "~/plugins/bootstrap.js", mode: "client" },
     "~/plugins/pinia.js",
@@ -20,6 +16,25 @@ export default defineNuxtConfig({
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
+      "postcss-import": {},
+    },
+  },
+  vite: {
+    server: {
+      fs: {
+        strict: false,
+      },
+    },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `
+            @use "@/assets/scss/variables" as *;
+            @use "@/assets/scss/mixins" as *;
+            @use "@/assets/scss/fonts" as *;
+          `,
+        },
+      },
     },
   },
 });

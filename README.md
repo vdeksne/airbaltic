@@ -1,75 +1,42 @@
-# Nuxt Minimal Starter
+### Nuxt 3 website
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This project was built with:
+
+- **Nuxt 3**
+- **Pinia**
+- **Vitest**
+- **Cypress**
+
+![Demo GIF](./assets/airbaltic.gif)
+
+A few inital tests were executed to test the functionality of the website. The tests were written using vitest and Cypress testing frameworks.
+
+![Testse](./assets/tests.png)
 
 ## Setup
 
-Make sure to install dependencies:
+To set up the project, follow these steps:
 
-```bash
-# npm
-npm install
+1. Install dependencies:
 
-# pnpm
-pnpm install
+   ```sh
+   pnpm install
+   ```
 
-# yarn
-yarn install
+2. Run the development server:
 
-# bun
-bun install
-```
+   ```sh
+   pnpm run dev
+   ```
 
-## Development Server
+3. Run the tests:
 
-Start the development server on `http://localhost:3000`:
+   ```sh
+   pnpm vitest
+   ```
 
-```bash
-# npm
-npm run dev
+4. Run the Cypress tests:
 
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+   ```sh
+   pnpm run cypress:open
+   ```

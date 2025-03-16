@@ -1,7 +1,7 @@
 <template>
   <header :class="{ 'scrolled-nav': scrollPosition }">
     <div class="menu-container">
-      <div class="bg-white">
+      <div>
         <header class="inset-x-0 top-0 z-50">
           <nav
             class="menu-container-inner flex items-center justify-between"
@@ -20,7 +20,6 @@
                   />
                 </svg>
               </NuxtLink>
-              <!-- nuxt page end -->
             </div>
             <div class="flex lg:hidden icon">
               <i
@@ -35,27 +34,20 @@
                 @click="toggleMobileNav"
                 :class="{ 'icon-active': mobileNav }"
                 type="button"
-                class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+                class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 burger-icon"
               >
                 <span class="sr-only">Open main menu</span>
                 <svg
-                  class="size-6"
+                  viewBox="0 0 20 14"
                   fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                  data-slot="icon"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                  />
+                  <rect y="12" width="20" height="2" rx="1" fill="#152649" />
+                  <rect y="6" width="20" height="2" rx="1" fill="#152649" />
+                  <rect width="20" height="2" rx="1" fill="#152649" />
                 </svg>
               </button>
             </div>
-            <!-- desktop view -->
             <div
               v-show="!mobile"
               class="navigation menu-container-inner-padding menu-desktop"
@@ -123,20 +115,11 @@
                 </a>
               </div>
               <div class="manu-txt-lg-container hidden lg:flex">
-                <NuxtLink class="manu-txt-lg" to="/main/plan"
-                  >Plan and book</NuxtLink
-                >
-                <NuxtLink to="/main/prepare" class="manu-txt-lg"
-                  >Prepare for your trip</NuxtLink
-                >
-                <NuxtLink to="/main/information" class="manu-txt-lg"
-                  >Information</NuxtLink
-                >
-                <NuxtLink to="/main/pins" class="manu-txt-lg">PINS</NuxtLink>
-
-                <NuxtLink to="/main/offers" class="manu-txt-lg"
-                  >Special offers</NuxtLink
-                >
+                <a class="manu-txt-lg" href="#">Plan and book</a>
+                <a href="#" class="manu-txt-lg">Prepare for your trip</a>
+                <a href="#" class="manu-txt-lg">Information</a>
+                <a href="#" class="manu-txt-lg">PINS</a>
+                <a href="#" class="manu-txt-lg">Special offers</a>
               </div>
             </div>
           </nav>
@@ -197,31 +180,30 @@
               <div class="mt-6 flow-root">
                 <div class="-my-6 divide-y divide-gray-500/10">
                   <div class="space-y-2 py-6">
-                    <NuxtLink
+                    <a
                       class="manu-txt-lg -mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:bg-gray-50"
-                      to="/main/plan"
-                      >Plan and book</NuxtLink
+                      href="#"
+                      >Plan and book</a
                     >
-                    <NuxtLink
-                      to="/main/prepare"
+                    <a
+                      href="#"
                       class="manu-txt-lg -mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:bg-gray-50"
-                      >Prepare for your trip</NuxtLink
+                      >Prepare for your trip</a
                     >
-                    <NuxtLink
-                      to="/main/information"
+                    <a
+                      href="#"
                       class="manu-txt-lg -mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:bg-gray-50"
-                      >Information</NuxtLink
+                      >Information</a
                     >
-                    <NuxtLink
-                      to="/main/pins"
+                    <a
+                      href="#"
                       class="manu-txt-lg -mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:bg-gray-50"
-                      >PINS</NuxtLink
+                      >PINS</a
                     >
-
-                    <NuxtLink
-                      to="/main/offers"
+                    <a
+                      href="#"
                       class="manu-txt-lg -mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:bg-gray-50"
-                      >Special offers</NuxtLink
+                      >Special offers</a
                     >
                   </div>
                   <div class="py-6">
@@ -287,62 +269,47 @@
   </header>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
+import { ref, onMounted, onBeforeUnmount } from "vue";
 
-export default defineComponent({
-  name: "Menu",
-  data() {
-    return {
-      scrollPosition: false,
-      mobile: false,
-      mobileNav: false,
-      windowWidth: typeof window !== "undefined" ? window.innerWidth : 0,
-    };
-  },
-  mounted() {
-    if (typeof window !== "undefined") {
-      this.windowWidth = window.innerWidth;
-      window.addEventListener("resize", this.checkScreen);
-      this.checkScreen();
-    }
-  },
-  beforeDestroy() {
-    if (typeof window !== "undefined") {
-      window.removeEventListener("resize", this.checkScreen);
-    }
-  },
-  methods: {
-    toggleMobileNav() {
-      this.mobileNav = !this.mobileNav;
-    },
+const scrollPosition = ref(false);
+const mobile = ref(false);
+const mobileNav = ref(false);
+const windowWidth = ref(typeof window !== "undefined" ? window.innerWidth : 0);
 
-    checkScreen() {
-      if (typeof window !== "undefined") {
-        this.windowWidth = window.innerWidth;
-        if (this.windowWidth <= 1000) {
-          this.mobile = true;
-          return;
-        }
-        this.mobile = false;
-        this.mobileNav = false;
-      }
-    },
-  },
+const toggleMobileNav = () => {
+  mobileNav.value = !mobileNav.value;
+};
+
+const checkScreen = () => {
+  if (typeof window !== "undefined") {
+    windowWidth.value = window.innerWidth;
+    if (windowWidth.value <= 1399) {
+      mobile.value = true;
+      return;
+    }
+    mobile.value = false;
+    mobileNav.value = false;
+  }
+};
+
+onMounted(() => {
+  if (typeof window !== "undefined") {
+    windowWidth.value = window.innerWidth;
+    window.addEventListener("resize", checkScreen);
+    checkScreen();
+  }
+});
+
+onBeforeUnmount(() => {
+  if (typeof window !== "undefined") {
+    window.removeEventListener("resize", checkScreen);
+  }
 });
 </script>
 
-<style>
-@import "tailwindcss/tailwind";
-@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
-
-:root {
-  --green-color: #cdda32;
-  --font: "Roboto", sans-serif;
-  --Header-Text: #7e7e7e;
-}
+<style lang="scss" scoped>
 .menu-container-inner-padding {
-  /* margin: 0 6.75rem; */
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -350,25 +317,23 @@ export default defineComponent({
 }
 .menu-container {
   width: 100%;
-  /* height: 6.875rem; */
   padding: 0;
-  font-family: var(--font);
+  font-family: $font;
   display: flex;
-  /* align-items: center; */
   flex-direction: column;
   padding: 0 8.75rem;
 }
 .menu-container-inner {
   width: 100%;
   padding: 0;
-  font-family: var(--font);
+  font-family: $font;
   display: flex;
   align-items: center;
 }
 .logo-container-a {
   width: 11.25rem;
   height: 6.875rem;
-  background-color: var(--green-color);
+  background-color: $color-green;
   padding: 0;
   margin: 0;
   display: flex;
@@ -379,7 +344,6 @@ export default defineComponent({
   width: 11.25rem;
   height: 6.875rem;
   padding: 0;
-  /* overflow: hidden; */
 }
 .logo-container-a svg {
   width: 7.545rem;
@@ -390,23 +354,23 @@ export default defineComponent({
   height: 1.25rem;
 }
 .menu-small-txt {
-  color: var(--Header-Text);
-  font-family: var(--font);
+  color: $color-header-text;
+  font-family: $font;
   font-size: 0.75rem;
   font-style: normal;
   font-weight: 500;
-  line-height: 0.875rem; /* 116.667% */
+  line-height: 0.875rem;
 }
 .menu-small-txt-h2-language {
   width: 5.2rem;
 }
 .menu-small-txt-h2 {
-  color: var(--Header-Text);
-  font-family: var(--font);
+  color: $color-header-text;
+  font-family: $font;
   font-size: 0.75rem;
   font-style: normal;
   font-weight: 500;
-  line-height: 0.875rem; /* 116.667% */
+  line-height: 0.875rem;
 }
 .menu-icon {
   margin-left: 1.5rem;
@@ -430,12 +394,12 @@ export default defineComponent({
   align-items: center;
 }
 .manu-txt-lg {
-  color: var(--Header-Text, #7e7e7e);
-  font-family: var(--font);
+  color: $color-header-text;
+  font-family: $font;
   font-size: 1.25rem;
   font-style: normal;
   font-weight: 400;
-  line-height: 1.5rem; /* 120% */
+  line-height: 1.5rem;
   column-gap: 2.5rem;
   display: flex;
 }
@@ -461,7 +425,11 @@ export default defineComponent({
   align-items: center;
   justify-content: flex-start;
 }
-@media (max-width: 1222px) {
+.burger-icon svg {
+  width: 1.25rem;
+  height: 0.875rem;
+}
+@media (max-width: 1399px) {
   .menu-container {
     padding: 0 1.6rem 0 0;
   }

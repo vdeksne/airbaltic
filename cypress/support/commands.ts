@@ -27,13 +27,14 @@
 
 // Custom command to fill out the form
 Cypress.Commands.add("fillForm", (formData) => {
-  cy.get("#fullName").type(formData.fullName);
-  cy.get("#email").type(formData.email);
-  cy.get("#countryCode").type(formData.countryCode);
-  cy.get("#phone").type(formData.phone);
-  cy.get("#flightDateDay").type(formData.flightDate.day);
-  cy.get("#flightDateMonth").type(formData.flightDate.month);
-  cy.get("#flightDateYear").type(formData.flightDate.year);
+  cy.get('input[name="fullName"]').type(formData.fullName);
+  cy.get('input[name="email"]').type(formData.email);
+  cy.get('input[name="countryCode"]').type(formData.countryCode);
+  cy.get('input[name="phone"]').type(formData.phone);
+  cy.get('input[name="flightNumber"]').type(formData.flightNumber);
+  cy.get('input[name="day"]').type(formData.flightDate.day);
+  cy.get('input[name="month"]').type(formData.flightDate.month);
+  cy.get('input[name="year"]').type(formData.flightDate.year);
 });
 
 declare global {
@@ -51,6 +52,7 @@ declare global {
         options: Partial<VisitOptions>
       ): Chainable<Element>;
       fillForm(formData: {
+        flightNumber: string;
         fullName: string;
         email: string;
         countryCode: string;

@@ -4,11 +4,22 @@
       <div class="text-container flex flex-wrap">
         <div class="w-full text-column">
           <div class="w-full text-column">
-            <h4
-              class="footer-title uppercase text-lg font-semibold text-dark dark:text-white"
-            >
-              Helpful links
-            </h4>
+            <div class="footer-icon-box">
+              <h4 class="footer-title uppercase text-lg font-semibold">
+                Helpful links
+              </h4>
+              <svg
+                viewBox="0 0 11 11"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10.3906 4.20703V6.32617H0.644531V4.20703H10.3906ZM6.66016 0.222656V10.5742H4.38477V0.222656H6.66016Z"
+                  fill="#333333"
+                />
+              </svg>
+            </div>
+
             <div class="line-mobile"></div>
             <ul v-show="!mobile" class="space-y-2">
               <li>
@@ -56,11 +67,22 @@
         </div>
         <div class="w-full text-column">
           <div class="w-full text-column">
-            <h4
-              class="footer-title uppercase text-lg font-semibold text-dark dark:text-white"
-            >
-              About airbaltic
-            </h4>
+            <div class="footer-icon-box">
+              <h4 class="footer-title uppercase text-lg font-semibold">
+                About airbaltic
+              </h4>
+              <svg
+                viewBox="0 0 11 11"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10.3906 4.20703V6.32617H0.644531V4.20703H10.3906ZM6.66016 0.222656V10.5742H4.38477V0.222656H6.66016Z"
+                  fill="#333333"
+                />
+              </svg>
+            </div>
+
             <div class="line-mobile"></div>
             <ul v-show="!mobile" class="space-y-2">
               <li>
@@ -92,11 +114,22 @@
         </div>
         <div class="w-full text-column">
           <div class="w-full text-column">
-            <h4
-              class="footer-title uppercase text-lg font-semibold text-dark dark:text-white"
-            >
-              airbaltic partners
-            </h4>
+            <div class="footer-icon-box">
+              <h4 class="footer-title uppercase text-lg font-semibold">
+                airbaltic partners
+              </h4>
+              <svg
+                viewBox="0 0 11 11"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10.3906 4.20703V6.32617H0.644531V4.20703H10.3906ZM6.66016 0.222656V10.5742H4.38477V0.222656H6.66016Z"
+                  fill="#333333"
+                />
+              </svg>
+            </div>
+
             <div class="line-mobile"></div>
             <ul v-show="!mobile" class="space-y-2">
               <li>
@@ -128,11 +161,21 @@
         </div>
         <div class="w-full text-column">
           <div class="w-full text-column">
-            <h4
-              class="footer-title uppercase text-lg font-semibold text-dark dark:text-white"
-            >
-              Customer support
-            </h4>
+            <div class="footer-icon-box">
+              <h4 class="footer-title uppercase text-lg font-semibold">
+                Customer support
+              </h4>
+              <svg
+                viewBox="0 0 11 11"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10.3906 4.20703V6.32617H0.644531V4.20703H10.3906ZM6.66016 0.222656V10.5742H4.38477V0.222656H6.66016Z"
+                  fill="#333333"
+                />
+              </svg>
+            </div>
             <div class="line-mobile"></div>
             <ul v-show="!mobile" class="space-y-2">
               <li>
@@ -162,13 +205,26 @@
             </ul>
           </div>
         </div>
-        <div class="w-full text-column lg:w-3/12">
+        <div class="w-full text-column">
           <div class="w-full text-column text-column-newsletter">
-            <h4
-              class="newsletter-txt footer-title uppercase text-lg font-semibold text-dark dark:text-white"
-            >
-              Subscribe to newsletter
-            </h4>
+            <div class="footer-icon-box">
+              <h4
+                class="newsletter-txt footer-title uppercase text-lg font-semibold"
+              >
+                Subscribe to newsletter
+              </h4>
+              <svg
+                viewBox="0 0 11 11"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10.3906 4.20703V6.32617H0.644531V4.20703H10.3906ZM6.66016 0.222656V10.5742H4.38477V0.222656H6.66016Z"
+                  fill="#333333"
+                />
+              </svg>
+            </div>
+
             <!-- newsletter -->
             <div class="newsletter-container mt-6 flex max-w-md gap-x-4">
               <label for="email-address" class="sr-only"> Email address </label>
@@ -303,54 +359,45 @@
   </footer>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
+import { ref, onMounted, onBeforeUnmount } from "vue";
 
-export default defineComponent({
-  name: "Footer",
-  data() {
-    return {
-      mobile: false,
-      mobileNav: false,
-      windowWidth: 0,
-    };
-  },
-  mounted() {
-    if (typeof window !== "undefined") {
-      this.windowWidth = window.innerWidth;
-      window.addEventListener("resize", this.checkScreen);
-      this.checkScreen();
-    }
-  },
-  beforeDestroy() {
-    if (typeof window !== "undefined") {
-      window.removeEventListener("resize", this.checkScreen);
-    }
-  },
-  methods: {
-    toggleMobileNav() {
-      this.mobileNav = !this.mobileNav;
-    },
+const mobile = ref(false);
+const mobileNav = ref(false);
+const windowWidth = ref(0);
 
-    checkScreen() {
-      if (typeof window !== "undefined") {
-        this.windowWidth = window.innerWidth;
-        if (this.windowWidth <= 1399) {
-          this.mobile = true;
-          return;
-        }
-        this.mobile = false;
-        this.mobileNav = false;
-      }
-    },
-  },
+const toggleMobileNav = () => {
+  mobileNav.value = !mobileNav.value;
+};
+
+const checkScreen = () => {
+  if (typeof window !== "undefined") {
+    windowWidth.value = window.innerWidth;
+    if (windowWidth.value <= 1399) {
+      mobile.value = true;
+      return;
+    }
+    mobile.value = false;
+    mobileNav.value = false;
+  }
+};
+
+onMounted(() => {
+  if (typeof window !== "undefined") {
+    windowWidth.value = window.innerWidth;
+    window.addEventListener("resize", checkScreen);
+    checkScreen();
+  }
+});
+
+onBeforeUnmount(() => {
+  if (typeof window !== "undefined") {
+    window.removeEventListener("resize", checkScreen);
+  }
 });
 </script>
 
-<style scoped>
-@import "tailwindcss/tailwind";
-@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
-
+<style lang="scss" scoped>
 :root {
   --White-bg: #f9f9f9;
   --Social-Background: #e9e9e9;
@@ -575,6 +622,19 @@ export default defineComponent({
   text-decoration: underline;
   text-decoration-color: #cdda32;
   padding-left: 1rem;
+}
+.footer-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-icon-box svg {
+  width: 0.6875rem;
+  height: 0.6875rem;
+
+  @include d {
+    display: none;
+  }
 }
 
 @media (max-width: 1399px) {

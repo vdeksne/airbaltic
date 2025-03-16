@@ -59,7 +59,7 @@
       </div>
     </div>
   </div>
-  <div class="menu-line"></div>
+  <div class="menu-line menu-line-back"></div>
   <div class="form-container">
     <div class="sidebar-container-split">
       <div v-if="!mobile" class="sidebar-container">
@@ -121,228 +121,7 @@
             </div>
             <!-- form start -->
             <!-- component -->
-            <form @submit.prevent="handleSubmit" class="form-submit">
-              <div class="form-color-continer p-4 px-4 md:p-8 mb-6">
-                <div
-                  class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3"
-                >
-                  <div class="text-gray-600">
-                    <p class="form-main-font-h font-medium text-lg">
-                      Contact details
-                    </p>
-                    <p class="form-main-font-p">
-                      Something also goes here, so it doesn't look that lonely
-                      down here
-                    </p>
-                  </div>
-
-                  <div class="lg:col-span-2">
-                    <div
-                      class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5"
-                    >
-                      <div class="form-box-grid md:col-span-5">
-                        <label for="full_name">Name, surname</label>
-                        <input
-                          type="text"
-                          name="full_name"
-                          id="full_name"
-                          class="form-box-lg h-10 border mt-1 px-4 w-full bg-gray-50"
-                          v-model="formData.fullName"
-                        />
-                        <span v-if="errors['fullName']" class="text-red-500">{{
-                          errors["fullName"]
-                        }}</span>
-                      </div>
-
-                      <div class="form-box-grid md:col-span-5">
-                        <label for="email">E-mail</label>
-                        <input
-                          type="text"
-                          name="email"
-                          id="email"
-                          class="form-box-lg h-10 border mt-1 px-4 w-full bg-gray-50"
-                          v-model="formData.email"
-                          placeholder=""
-                        />
-                        <span v-if="errors['email']" class="text-red-500">{{
-                          errors["email"]
-                        }}</span>
-                      </div>
-
-                      <div class="md:col-span-3 phone-box">
-                        <div class="flex phone-box-inner">
-                          <div class="phone-one">
-                            <label for="country_code">Country code</label>
-                            <select
-                              name="country_code"
-                              id="country_code"
-                              class="country-code h-10 border mt-1 px-2 pr-8 w-1/4 bg-gray-50"
-                              v-model="formData.countryCode"
-                            >
-                              <option disabled value="">{{ "+371" }}</option>
-                              <option value="+371">+371 (Latvia)</option>
-                              <option value="+91">+91 (India)</option>
-                              <option value="+81">+81 (Japan)</option>
-                              <option value="+61">+61 (Australia)</option>
-                              <option value="+86">+86 (China)</option>
-                              <option value="+1">+1 (USA)</option>
-                              <option value="+44">+44 (UK)</option>
-                              <option value="+49">+49 (Germany)</option>
-                              <option value="+33">+33 (France)</option>
-                            </select>
-                            <span
-                              v-if="errors['countryCode']"
-                              class="text-red-500"
-                              >{{ errors["countryCode"] }}</span
-                            >
-                          </div>
-
-                          <div class="form-box-grid ml-2 w-3/4">
-                            <label for="phone">Phone Number</label>
-                            <input
-                              type="text"
-                              name="phone"
-                              id="phone"
-                              class="form-phone h-10 border mt-1 px-4 w-full bg-gray-50"
-                              v-model="formData.phone"
-                              placeholder=""
-                            />
-                            <span v-if="errors['phone']" class="text-red-500">{{
-                              errors["phone"]
-                            }}</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="menu-line"></div>
-              <div class="form-color-continer p-4 px-4 md:p-8 mb-6">
-                <div
-                  class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3"
-                >
-                  <div class="text-gray-600">
-                    <p class="form-main-font-h font-medium text-lg">
-                      Select flight
-                    </p>
-                    <p class="form-main-font-p">
-                      Suspendisse elementum turpis ut volutpat ultricies. Mauris
-                      eget nisl diam. In vel felis in metus vulputate imperdiet
-                      vestibulum at dolor.
-                    </p>
-                  </div>
-
-                  <div class="lg:col-span-2">
-                    <div
-                      class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5"
-                    >
-                      <div class="form-box-grid md:col-span-5">
-                        <label for="flight_number">Flight number</label>
-                        <input
-                          type="text"
-                          name="flight_number"
-                          id="flight_number"
-                          class="form-box-lg h-10 border mt-1 px-4 w-full bg-gray-50"
-                          v-model="formData.flightNumber"
-                        />
-                        <span
-                          v-if="errors['flightNumber']"
-                          class="text-red-500"
-                          >{{ errors["flightNumber"] }}</span
-                        >
-                      </div>
-
-                      <div class="md:col-span-5">
-                        <label for="flight_date">Flight Date</label>
-                        <div class="flex">
-                          <input
-                            type="text"
-                            name="day"
-                            id="day"
-                            class="form-box-s h-10 border mt-1 px-2 w-1/4 bg-gray-50"
-                            v-model="formData.flightDate.day"
-                            placeholder="DD"
-                          />
-                          <input
-                            type="text"
-                            name="month"
-                            id="month"
-                            class="form-box-s h-10 border mt-1 px-2 w-1/4 bg-gray-50 ml-2"
-                            v-model="formData.flightDate.month"
-                            placeholder="MM"
-                          />
-                          <select
-                            name="year"
-                            id="year"
-                            class="form-box-m h-10 border mt-1 px-2 w-1/2 bg-gray-50 ml-2"
-                            v-model="formData.flightDate.year"
-                          >
-                            <option disabled :value="null">{{ "YYYY" }}</option>
-                            <option
-                              v-for="year in getYears()"
-                              :key="year"
-                              :value="year"
-                            >
-                              {{ year }}
-                            </option>
-                          </select>
-                        </div>
-                        <p
-                          v-if="errors['flightDate.day']"
-                          class="text-red-500 text-sm"
-                        >
-                          {{ errors["flightDate.day"] }}
-                        </p>
-                        <p
-                          v-if="errors['flightDate.month']"
-                          class="text-red-500 text-sm"
-                        >
-                          {{ errors["flightDate.month"] }}
-                        </p>
-                        <p
-                          v-if="errors['flightDate.year']"
-                          class="text-red-500 text-sm"
-                        >
-                          {{ errors["flightDate.year"] }}
-                        </p>
-                      </div>
-                      <div class="md:col-span-5">
-                        <button class="cta-main">Add flight</button>
-                        <button class="cta-delete">Delete flight</button>
-                      </div>
-
-                      <div class="md:col-span-5 text-right"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="menu-line"></div>
-              <div class="form-bottom form-color-continer p-4 px-4 md:p-8 mb-6">
-                <div
-                  class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3"
-                >
-                  <div class="text-gray-600">
-                    <p class="font-medium text-lg"></p>
-                    <p class="form-main-font-p">
-                      By submitting this form you agree to airBaltic’s Privacy
-                      Policy
-                    </p>
-                  </div>
-
-                  <div class="lg:col-span-2">
-                    <div
-                      class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5"
-                    >
-                      <div class="md:col-span-5">
-                        <button type="submit" class="cta">Confirm</button>
-                      </div>
-                      <!-- button -->
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </form>
+            <NuxtForm class="form-frame"></NuxtForm>
 
             <!-- form end -->
           </div>
@@ -354,10 +133,14 @@
 
 <script lang="ts">
 import { defineComponent, ref, onMounted, onUnmounted } from "vue";
-import { useFormStore } from "~/store/formStore";
+import { useFormStore } from "../store/formStore";
 import { z } from "zod";
+import NuxtForm from "../components/NuxtForm.vue";
 
 export default defineComponent({
+  components: {
+    NuxtForm,
+  },
   name: "Form",
   data() {
     return {
@@ -463,21 +246,7 @@ export default defineComponent({
 });
 </script>
 
-<style>
-@import "tailwindcss/tailwind";
-@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
-:root {
-  --Text-Light: #999;
-  --Brand-Green-Hover: #acb90c;
-  --Brand-Blue: #152649;
-  --Brand-Blue-UI: #313892;
-  --Alert-Info: #e5f6ff;
-  --Alert-Warning: #ffc;
-  --Sidebar-Background: #f9f9f9;
-  --Text-Description: rgba(21, 38, 73, 0.64);
-  --Form-Border: #ced2d7;
-  --Brand-White: #fff;
-}
+<style lang="scss" scoped>
 .home-menu {
   display: flex;
   gap: 1.5rem;
@@ -487,14 +256,14 @@ export default defineComponent({
   margin: 0 8.75rem;
 }
 .menu-h1 {
-  color: var(--Text-Light, #999);
-  font-family: Roboto;
+  color: $color-text-light;
+  font-family: $font;
   font-size: 0.8125rem;
   font-style: normal;
   font-weight: 400;
   line-height: 0.9375rem; /* 115.385% */
   text-decoration: underline;
-  text-decoration-color: #cdda32;
+  text-decoration-color: $color-green;
   cursor: pointer;
 }
 .no-underline {
@@ -508,8 +277,8 @@ export default defineComponent({
   margin: 0;
 }
 .home-menu-container-mobile {
-  color: var(--Brand-Blue-UI, #313892);
-  font-family: Roboto;
+  color: $color-brand-blue-ui;
+  font-family: $font;
   font-size: 0.75rem;
   font-style: normal;
   font-weight: 500;
@@ -523,23 +292,25 @@ export default defineComponent({
   justify-content: flex-start;
 }
 .sidebar-container {
-  color: var(--Brand-Blue, #152649);
-  font-family: Roboto;
+  color: $color-brand-blue;
+  font-family: $font;
   font-size: 0.875rem;
   font-style: normal;
   font-weight: 500;
   line-height: 1rem; /* 114.286% */
   width: 20.25rem;
-  background-color: #f9f9f9;
+  background-color: $color-white-bg;
   height: auto;
   margin: 0;
 }
+
 .sidebar-header {
   padding: 0.75rem 1.5rem;
   cursor: pointer;
 }
 .sidebar-header:hover {
-  color: var(--Brand-Green-Hover, #acb90c);
+  color: $color-brand-green-hover;
+  border-left: 0.125rem solid #cdda32;
 }
 .menu-line {
   width: 100%;
@@ -549,20 +320,26 @@ export default defineComponent({
 .green-bullets {
   list-style-type: none;
   padding-left: 1rem;
+  color: #152649;
+  font-family: $font;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2rem; /* 200% */
+  @include m {
+    font-size: 0.875rem;
+  }
 }
-
 .green-bullets li {
   position: relative;
   padding-left: 1.5rem;
   margin-bottom: 0.5rem;
-  /* line-height: 1.5; */
 }
 .sidebar-container-split {
-  height: 100vh;
+  // height: 100vh;
   width: 20.25rem;
   position: absolute;
 }
-
 .green-bullets li::before {
   content: "";
   position: absolute;
@@ -570,11 +347,14 @@ export default defineComponent({
   top: 0.45rem;
   width: 0.5rem;
   height: 0.5rem;
-  background-color: #cdda32;
+  background-color: $color-green;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  @include m {
+    top: 0.7rem;
+  }
 }
 .content-container {
   flex-grow: 1;
@@ -582,6 +362,10 @@ export default defineComponent({
   margin-left: 24rem;
   position: relative;
   margin-top: 3rem;
+  @include m {
+    margin: 0;
+    padding: 0;
+  }
 }
 .bullet-boxes {
   display: flex;
@@ -598,20 +382,29 @@ export default defineComponent({
   padding: 0.94rem 1.5rem;
 }
 .info-blue {
-  background: var(--Alert-Info, #e5f6ff);
+  background: $color-alert-info;
 }
 .info-yellow {
-  background: var(--Alert-Warning, #ffc);
+  background: $color-alert-warning;
 }
 .info-boxes {
   display: flex;
   gap: 1.25rem;
   margin: 2rem 0;
+  @include m {
+    flex-direction: column;
+    margin-left: -2rem;
+    margin-right: -2rem;
+    gap: 0;
+  }
 }
 .phone-box {
   display: flex;
   align-items: flex-start;
   flex-direction: row;
+  @include m {
+    padding: 1rem 1.5rem;
+  }
 }
 .phone-box-inner {
   display: flex;
@@ -627,27 +420,33 @@ export default defineComponent({
   width: 6.25rem;
 }
 .form-header h1 {
-  color: var(--Brand-Blue, #152649);
-  font-family: Roboto;
+  color: $color-brand-blue;
+  font-family: $font;
   font-size: 2.5rem;
   font-style: normal;
   font-weight: 300;
   line-height: 2.9375rem; /* 117.5% */
   margin-bottom: 1.75rem;
+  @include m {
+    font-size: 2rem;
+  }
 }
 .form-header h2 {
-  color: var(--Brand-Blue, #152649);
-  font-family: Roboto;
+  color: $color-brand-blue;
+  font-family: $font;
   font-size: 1.25rem;
   font-style: normal;
   font-weight: 300;
   line-height: 1.75rem; /* 140% */
   max-width: 40rem;
   margin-bottom: 1.75rem;
+  @include m {
+    font-size: 1.125rem;
+  }
 }
 .form-header h3 {
-  color: var(--Brand-Blue, #152649);
-  font-family: Roboto;
+  color: $color-brand-blue;
+  font-family: $font;
   font-size: 1rem;
   font-style: normal;
   font-weight: 500;
@@ -655,12 +454,12 @@ export default defineComponent({
   margin-bottom: 1rem;
 }
 .form-color-continer {
-  background: var(--Sidebar-Background, #f9f9f9);
+  background: $color-sidebar-background;
   margin-bottom: 0;
 }
 .form-main-font-h {
-  color: var(--Brand-Blue, #152649);
-  font-family: Roboto;
+  color: $color-brand-blue;
+  font-family: $font;
   font-size: 1rem;
   font-style: normal;
   font-weight: 500;
@@ -668,33 +467,32 @@ export default defineComponent({
   margin-bottom: 0.5rem;
 }
 .form-main-font-p {
-  color: var(--Text-Description, rgba(21, 38, 73, 0.64));
-  font-family: Roboto;
+  color: $color-text-description;
+  font-family: $font;
   font-size: 0.75rem;
   font-style: normal;
   font-weight: 400;
   line-height: 1.25rem; /* 166.667% */
-  /* width: 15.9375rem; */
   padding-right: 1rem;
 }
 .form-bottom {
   margin-bottom: 4rem;
 }
 label {
-  color: var(--Brand-Blue, #152649);
-  font-family: Roboto;
+  color: $color-brand-blue;
+  font-family: $font;
   font-size: 0.75rem;
   font-style: normal;
   font-weight: 400;
 }
 .cta-main {
   border-radius: 0.25rem;
-  border: 1px solid var(--Brand-Blue-UI, #313892);
+  border: 1px solid $color-brand-blue-ui;
   width: 7.5rem;
   height: 2.75rem;
   flex-shrink: 0;
-  color: var(--Brand-Blue-UI, #313892);
-  font-family: Roboto;
+  color: $color-brand-blue-ui;
+  font-family: $font;
   font-size: 0.875rem;
   font-style: normal;
   font-weight: 700;
@@ -703,8 +501,8 @@ label {
   margin-right: 2.6rem;
 }
 .cta-delete {
-  color: var(--Text-Description, rgba(21, 38, 73, 0.64));
-  font-family: Roboto;
+  color: $color-text-description;
+  font-family: $font;
   font-size: 0.875rem;
   font-style: normal;
   font-weight: 700;
@@ -712,34 +510,34 @@ label {
 }
 .cta-main:hover {
   border-radius: 0.25rem;
-  background: var(--Brand-Blue-UI, #313892);
-  color: #fff;
+  background: $color-brand-blue-ui;
+  color: $color-brand-white;
 }
 .cta {
   width: 10rem;
   height: 3.25rem;
   flex-shrink: 0;
   border-radius: 0.25rem;
-  background: var(--Brand-Blue-UI, #313892);
-  color: var(--Brand-White, #fff);
-  font-family: Roboto;
+  background: $color-brand-blue-ui;
+  color: $color-brand-white;
+  font-family: $font;
   font-size: 1rem;
   font-style: normal;
   font-weight: 700;
   line-height: 0.875rem; /* 87.5% */
 }
 .info-box p {
-  color: var(--Brand-Blue, #152649);
+  color: $color-brand-blue;
   text-align: center;
-  font-family: Roboto;
+  font-family: $font;
   font-size: 0.875rem;
   font-style: normal;
   font-weight: 400;
   line-height: 1.3125rem; /* 150% */
 }
 #year {
-  color: var(--Form-Placeholder, #b4b9c4);
-  font-family: Roboto;
+  color: $color-form-border;
+  font-family: $font;
   font-size: 1rem;
   font-style: normal;
   font-weight: 400;
@@ -747,24 +545,32 @@ label {
 }
 
 #country_code {
-  color: var(--Form-Placeholder, #b4b9c4);
-  font-family: Roboto;
+  color: $color-form-border;
+  font-family: $font;
   font-size: 1rem;
   font-style: normal;
   font-weight: 400;
   line-height: 1.25rem; /* 125% */
 }
-
+.menu-line-back {
+  @include m {
+    display: none;
+  }
+}
+.form-frame {
+  max-width: 46.25rem;
+  // height: 46.375rem;
+  @include m {
+    max-width: 100%;
+    height: auto;
+    // margin: 0 -1.25rem;
+  }
+}
 @media (max-width: 1399px) {
   .form-container {
     margin: 0 1.25rem;
   }
-  .content-container {
-    margin: 0 1.25rem;
-  }
-  .info-boxes {
-    flex-direction: column;
-  }
+
   .info-box {
     width: 100%;
     padding: 1rem;
@@ -792,8 +598,8 @@ label {
     width: 20.9375rem;
     height: 3rem;
     flex-shrink: 0;
-    border: 1px solid var(--Form-Border, #ced2d7);
-    background: var(--Brand-White, #fff);
+    border: 1px solid $color-form-border;
+    background: $color-brand-white;
   }
   .form-box-grid {
     display: flex;
@@ -803,29 +609,29 @@ label {
     width: 13.75rem;
     height: 3rem;
     flex-shrink: 0;
-    border: 1px solid var(--Form-Border, #ced2d7);
-    background: var(--Brand-White, #fff);
+    border: 1px solid $color-form-border;
+    background: $color-brand-white;
   }
   .country-code {
     width: 6.25rem;
     height: 3rem;
     flex-shrink: 0;
-    border: 1px solid var(--Form-Border, #ced2d7);
-    background: var(--Brand-White, #fff);
+    border: 1px solid $color-form-border;
+    background: $color-brand-white;
   }
   .form-box-s {
     width: 4.875rem;
     height: 3rem;
     flex-shrink: 0;
-    border: 1px solid var(--Form-Border, #ced2d7);
-    background: var(--Brand-White, #fff);
+    border: 1px solid $color-form-border;
+    background: $color-brand-white;
   }
   .form-box-m {
     width: 6.375rem;
     height: 3rem;
     flex-shrink: 0;
-    border: 1px solid var(--Form-Border, #ced2d7);
-    background: var(--Brand-White, #fff);
+    border: 1px solid $color-form-border;
+    background: $color-brand-white;
   }
 }
 </style>

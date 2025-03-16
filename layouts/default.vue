@@ -1,21 +1,9 @@
 <template>
-  <div>
-    <Menu />
-  </div>
-  <div>
-    <slot></slot>
-  </div>
+  <Menu></Menu>
+  <slot></slot>
+  <Footer></Footer>
 </template>
 
-<script>
-import Menu from "@/components/menu.vue";
-
-export default {
-  components: {
-    Menu,
-  },
-  name: "DefaultLayout",
-};
-</script>
+<script setup></script>
 
 <style scoped></style>

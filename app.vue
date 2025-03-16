@@ -1,7 +1,10 @@
 <template>
-  <NuxtPage />
+  <UApp>
+    <NuxtPage />
+  </UApp>
 </template>
 
-<style>
-@import "tailwindcss/tailwind.css";
+<style lang="scss">
+@use "~/assets/scss/main.scss";
+@use "tailwindcss/tailwind";
 </style>
