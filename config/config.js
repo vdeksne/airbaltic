@@ -1,6 +1,6 @@
 export const config = {
   colors: {
-    primary: "#152649;",
+    primary: "#152649",
     secondary: "#313892",
     background: "#f9f9f9",
     text: "rgba(21, 38, 73, 0.64)",
